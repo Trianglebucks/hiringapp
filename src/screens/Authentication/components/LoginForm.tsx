@@ -17,22 +17,6 @@ interface LoginFormInput {
 }
 
 const LoginForm = () => {
-  const [state, setState] = useState<{ username: string; password: string }>({
-    username: "",
-    password: "",
-  });
-
-  const onChangeText = (value: string, stateName: string) => {
-    setState((prev) => ({
-      ...prev,
-      [stateName]: value,
-    }));
-  };
-
-  const onPressLogin = () => {
-    // Navigation.navigate(Screen.PIN_SCREEN);
-  };
-
   const {
     control,
     handleSubmit,
@@ -93,16 +77,6 @@ const LoginForm = () => {
           {errors.password.message}
         </Text>
       )}
-      {/* <Input
-        showIcon={false}
-        testID="input"
-        secureTextEntry
-        value={state.password}
-        placeholder={Labels.PASSWORD}
-        style={[styles.inputs, styles.passwordInptu]}
-        showPasswordIcon
-        onChangeText={(e) => onChangeText(e, "password")}
-      /> */}
       <ButtonText
         textOnly
         buttonText={ButtonTitle.FORGOT_PASSWORD}
