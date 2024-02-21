@@ -42,12 +42,13 @@ const TabNavigator = () => {
       // default configuration from React Navigation
       appearance={{
         floating: false,
-        activeColors: "#000000",
+        activeColors: "white",
         activeTabBackgrounds: "#7986F9",
+        whenInactiveShow: "label-only",
       }}
       tabBarOptions={{
-        activeTintColor: "#2F7C6E",
-        inactiveTintColor: "#222222",
+        activeTintColor: "white",
+        inactiveTintColor: "black",
       }}
     >
       <Tab.Screen name={Screen.JOB} component={JobStack} />
@@ -56,29 +57,6 @@ const TabNavigator = () => {
     </Tab.Navigator>
   );
 };
-
-// const RootNavigator = (props: any) => {
-//   return (
-//     <NavigationContainer>
-//       <Tab.Navigator
-//         // default configuration from React Navigation
-//         appearance={{
-//           floating: false,
-//           activeColors: "#000000",
-//           activeTabBackgrounds: "#7986F9",
-//         }}
-//         tabBarOptions={{
-//           activeTintColor: "#2F7C6E",
-//           inactiveTintColor: "#222222",
-//         }}
-//       >
-//         <Tab.Screen name={Screen.JOB} component={JobStack} />
-//         <Tab.Screen name={Screen.CANDIDATE} component={CandidateStack} />
-//         <Tab.Screen name={Screen.POST_NEW_JOB} component={PostNewJob} />
-//       </Tab.Navigator>
-//     </NavigationContainer>
-//   );
-// };
 
 const RootStack = createStackNavigator();
 
@@ -95,7 +73,13 @@ const RootNavigator = (props: any) => {
         routeNameRef.current = currentRouteName;
       }}
     >
-      <RootStack.Navigator initialRouteName={Screen.AUTHENTICATION}>
+      <RootStack.Navigator
+        // initialRouteName={Screen.AUTHENTICATION}
+        screenOptions={{
+          animationEnabled: true,
+          headerShown: true,
+        }}
+      >
         <RootStack.Screen name={"Jobify"} component={TabNavigator} />
         <RootStack.Screen name={Screen.JOB_LIST} component={JobList} />
         <RootStack.Screen name={Screen.JOB_DETAILS} component={JobDetails} />

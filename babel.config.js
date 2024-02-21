@@ -26,6 +26,7 @@ module.exports = function (api) {
             "@graphql": "./src/graphql",
             "@mobx": "./src/mobx",
             "@context": "./src/context",
+            "@services": "./src/services",
           },
         },
       ],

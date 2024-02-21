@@ -21,7 +21,8 @@
       "@providers/*": ["./src/providers/*"],
       "@graphql/*": ["./src/graphql/*"],
       "@mobx/*": ["./src/mobx/*"],
-      "@context/*": ["./src/context/*"]
+      "@context/*": ["./src/context/*"],
+      "@services/*": ["./src/services/*"]
     },
     "resolveJsonModule": true
   }

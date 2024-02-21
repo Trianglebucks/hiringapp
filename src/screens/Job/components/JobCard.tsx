@@ -152,7 +152,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-between",
     paddingLeft: verticalScale(12),
-    paddingRight: verticalScale(50),
+    paddingRight:
+      Platform.OS === "android" ? verticalScale(50) : verticalScale(70),
     paddingTop: 10,
   },
   titleWrapper: {
