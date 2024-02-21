@@ -76,7 +76,7 @@ const RootNavigator = (props: any) => {
       }}
     >
       <RootStack.Navigator
-        // initialRouteName={Screen.AUTHENTICATION}
+        initialRouteName={Screen.AUTHENTICATION}
         screenOptions={{
           animationEnabled: true,
           headerShown: true,

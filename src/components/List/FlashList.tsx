@@ -31,6 +31,8 @@ interface ListProps {
    * Sets the estimatedItemSize for FlashList
    */
   estimatedItemSize?: number;
+
+  ListEmptyComponent?: any;
 }
 
 /**
@@ -47,6 +49,7 @@ const FlashList = ({
   renderItem,
   horizontal = true,
   estimatedItemSize = 50,
+  ListEmptyComponent,
 }: ListProps) => {
   // const { colorTheme } = useContext(ThemeContext);
 
@@ -65,6 +68,7 @@ const FlashList = ({
         estimatedItemSize={estimatedItemSize}
         horizontal={horizontal}
         showsHorizontalScrollIndicator={false}
+        ListEmptyComponent={ListEmptyComponent}
       />
     </Container>
   );

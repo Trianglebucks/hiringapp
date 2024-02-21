@@ -33,6 +33,14 @@ const JobList: React.FC = () => {
     fetchData();
   }, []);
 
+  const ListEmptyComponent = () => {
+    return (
+      <View style={styles.noRecordsText}>
+        <Text>No Records Found!</Text>
+      </View>
+    );
+  };
+
   return (
     <Container>
       <FlashList
@@ -47,6 +55,7 @@ const JobList: React.FC = () => {
         )}
         estimatedItemSize={200}
         horizontal={false}
+        ListEmptyComponent={ListEmptyComponent}
       />
     </Container>
   );
@@ -67,6 +76,11 @@ const styles = StyleSheet.create({
     padding: 16,
     marginVertical: 8,
     borderRadius: 8,
+  },
+  noRecordsText: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 
