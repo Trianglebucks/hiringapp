@@ -67,6 +67,8 @@ const LoginForm = () => {
             onBlur={onBlur}
             style={styles.inputs}
             showIcon={false}
+            showPasswordIcon={true}
+            secureTextEntry={true}
           />
         )}
         name="password"
