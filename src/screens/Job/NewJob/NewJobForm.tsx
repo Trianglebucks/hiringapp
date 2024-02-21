@@ -1,12 +1,16 @@
 // screens/PostNewJob.tsx
-import React from "react";
+import React, { useEffect } from "react";
 import { View, Text, TextInput, Button, StyleSheet } from "react-native";
 import { useForm, SubmitHandler, Controller } from "react-hook-form";
 import Input from "@components/Input/Input";
 import { verticalScale } from "@utils/sizes";
 import ButtonText from "@components/Button/ButtonText";
+import { useRecoilValue } from "recoil";
+import { jobListState } from "@recoil/index";
+import Utils from "@utils/index";
+import { fetchJobs, postNewJob } from "@services/api";
 
-interface PostNewJobInput {
+export interface PostNewJobInput {
   title: string;
   description: string;
   company: string;
@@ -14,15 +18,21 @@ interface PostNewJobInput {
   requirements: string;
   skills: string;
   salaryRange: string;
+  id: number;
+  postedDate: string;
 }
 
 const NewJobForm: React.FC = () => {
+  const jobs = useRecoilValue(jobListState);
+
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<PostNewJobInput>({
     defaultValues: {
+      id: jobs.length + 1, // this is temporary approach, expected that the actual data has specific unique values
       title: "",
       description: "",
       company: "",
@@ -30,12 +40,21 @@ const NewJobForm: React.FC = () => {
       requirements: "",
       skills: "",
       salaryRange: "",
+      postedDate: Utils.helpers.getCurrentDate(),
     },
   });
 
-  const onSubmit: SubmitHandler<PostNewJobInput> = (data) => {
-    // You can handle the submission logic here
-    console.log(data);
+  const onSubmit: SubmitHandler<PostNewJobInput> = async (data) => {
+    try {
+      const result = await postNewJob(data);
+      // Handle success or navigation logic
+      console.log("onsubmit", result.message, result.success);
+      reset();
+      await fetchJobs();
+    } catch (error) {
+      // Handle error, show a message, etc.
+      console.error("onsubmit", error);
+    }
   };
 
   return (

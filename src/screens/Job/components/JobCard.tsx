@@ -122,7 +122,7 @@ const styles = StyleSheet.create({
     maxWidth: "100%",
     borderRadius: moderateScale(10),
     shadowColor: Colors.indigo_color,
-    fontFamily: "DMSans-Medium",
+    // fontFamily: "DMSans-Medium",
     paddingHorizontal: horizontalScale(20),
     paddingVertical: verticalScale(20),
     marginLeft: verticalScale(20),
@@ -173,7 +173,7 @@ const styles = StyleSheet.create({
     color: Colors.black,
     fontSize: moderateScale(14),
     fontWeight: "600",
-    fontFamily: Fonts.Metropolis_Medium,
+    // fontFamily: Fonts.Metropolis_Medium,
   },
   status: {
     flexDirection: "row",

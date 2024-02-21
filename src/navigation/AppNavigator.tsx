@@ -44,6 +44,8 @@ const TabNavigator = () => {
         floating: false,
         activeColors: "white",
         activeTabBackgrounds: "#7986F9",
+        /* works as intended */
+        // @ts-ignore
         whenInactiveShow: "label-only",
       }}
       tabBarOptions={{

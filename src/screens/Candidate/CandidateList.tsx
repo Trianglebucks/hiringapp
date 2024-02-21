@@ -33,12 +33,15 @@ const CandidateList: React.FC = () => {
     fetchData();
   }, []);
 
-  const navigateToCandidateDetails = () => {
-    Navigation.navigate("CandidateDetails");
+  const navigateToCandidateDetails = (item) => {
+    Navigation.navigate("CandidateDetails", { item });
   };
 
   const renderItem = ({ item }: { item: { id: number; name: string } }) => (
-    <TouchableOpacity style={styles.card} onPress={navigateToCandidateDetails}>
+    <TouchableOpacity
+      style={styles.card}
+      onPress={() => navigateToCandidateDetails(item)}
+    >
       <Text>{item.name}</Text>
     </TouchableOpacity>
   );

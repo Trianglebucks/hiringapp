@@ -1,3 +1,4 @@
+import { PostNewJobInput } from "@screens/Job/NewJob/NewJobForm";
 import axios from "axios";
 
 const baseURL = "http://localhost:3000/trpc/";
@@ -21,6 +22,19 @@ export const fetchJobs = async () => {
     return list;
   } catch (error) {
     console.error("Error fetching Jobs:", error);
+    throw error;
+  }
+};
+
+export const postNewJob = async (newJob: PostNewJobInput) => {
+  try {
+    console.log("DATA", newJob);
+    const response = await api.post("/job.addJobPost", newJob);
+    const data = response.data.result.data;
+    console.log("axios post", response.data);
+    return data;
+  } catch (error) {
+    console.error("Error posting new job:", error);
     throw error;
   }
 };
